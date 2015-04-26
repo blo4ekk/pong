@@ -1,8 +1,18 @@
-#include <SFML/Window.hpp>
+#include "game_state.h"
+#include "main_menu.h"
+
+
+game_state corestate;
+#include <iostream>
+
 
 int main()
 {
-	sf::Window window(sf::VideoMode(800, 600), "My window");
+
+	sf::RenderWindow window(sf::VideoMode(1024,820 ), "pong");
+	tine_state state = tine_state();
+	corestate.Setwindow(&window);
+	corestate.SetState(new main_menu());
 
 	// run the program as long as the window is open
 	while (window.isOpen())
@@ -15,6 +25,10 @@ int main()
 			if (event.type == sf::Event::Closed)
 				window.close();
 		}
+		window.clear(sf::Color::Black);
+		corestate.Update();
+		corestate.Render();
+		window.display();
 	}
 
 	return 0;
