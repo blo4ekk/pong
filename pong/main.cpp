@@ -2,10 +2,9 @@
 #include "main_menu.h"
 
 
+
 game_state corestate;
-#include <iostream>
-
-
+extern bool quitgame =false;
 int main()
 {
 
@@ -29,6 +28,10 @@ int main()
 		corestate.Update();
 		corestate.Render();
 		window.display();
+		if (quitgame)
+		{
+			window.close();
+		}
 	}
 
 	return 0;

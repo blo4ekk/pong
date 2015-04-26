@@ -1,9 +1,11 @@
 #include <iostream>
 #include "main_menu.h"
+#include "main_game.h"
 
 
 void main_menu::Initialize(sf::RenderWindow* window)
 {
+	this->selected = 0;
 	this->font = new sf::Font();
 	this->font1 = new sf::Font();
 	this->font->loadFromFile("font.ttf");
@@ -30,9 +32,27 @@ void main_menu::Destroy(sf::RenderWindow* window)
 {
 	delete this->font;
 	delete this->title;
+	delete this->play;
+	delete this->information;
+	delete this->exit;
 }
 void main_menu::Render(sf::RenderWindow* window)
 {
+	this->play->setColor(sf::Color::White);
+	this->information->setColor(sf::Color::White);
+	this->exit->setColor(sf::Color::White);
+	switch (this->selected)
+	{
+	case 0:
+		this->play->setColor(sf::Color::Red);
+		break;
+	case 1:
+		this->information->setColor(sf::Color::Red);
+		break;
+	case 2:
+		this->exit->setColor(sf::Color::Red);
+		break;
+	}
 	window->draw(*this->title);
 	window->draw(*this->play);
 	window->draw(*this->information);
@@ -40,4 +60,37 @@ void main_menu::Render(sf::RenderWindow* window)
 }
 void main_menu::Update(sf::RenderWindow* window)
 {
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Up) && !this->upkey)
+	{
+		this->selected -= 1;
+	}
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Down) && !this->downkey)
+	{
+		this->selected += 1;
+	}
+	if (this->selected > 1)
+	{
+		this->selected = 2;
+	}
+	if (this->selected < 1)
+	{
+		this->selected = 0;
+	}
+	this->upkey = sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Up);
+	this->downkey = sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Down);
+	
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Return))
+	{
+		switch (this->selected)
+		{
+		case 0:
+			corestate.SetState(new main_game());
+			break;
+		case 1:
+			break;
+		case 2:
+			quitgame = true;
+			break;
+		}
+	}
 }

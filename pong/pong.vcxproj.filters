@@ -13,6 +13,15 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Заголовочные файлы\Core">
+      <UniqueIdentifier>{d841e531-f22e-48ec-b2f8-55df480a2fe2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Заголовочные файлы\States">
+      <UniqueIdentifier>{09592115-cd6c-4559-83bb-92e309abd177}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Заголовочные файлы\Entity">
+      <UniqueIdentifier>{dfa56850-db26-48ca-8c4d-08908d47f44f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -21,13 +30,25 @@
     <ClCompile Include="main_menu.cpp">
       <Filter>Файлы исходного кода</Filter>
     </ClCompile>
+    <ClCompile Include="main_game.cpp">
+      <Filter>Файлы исходного кода</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="game_state.h">
-      <Filter>Заголовочные файлы</Filter>
+      <Filter>Заголовочные файлы\Core</Filter>
     </ClInclude>
     <ClInclude Include="main_menu.h">
-      <Filter>Заголовочные файлы</Filter>
+      <Filter>Заголовочные файлы\States</Filter>
+    </ClInclude>
+    <ClInclude Include="main_game.h">
+      <Filter>Заголовочные файлы\States</Filter>
+    </ClInclude>
+    <ClInclude Include="Entity.h">
+      <Filter>Заголовочные файлы\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="paddle_player.h">
+      <Filter>Заголовочные файлы\Entity</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
